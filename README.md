@@ -79,9 +79,9 @@ const colors = {
 module.exports = colors;
 ```
 
-You can use this module in your favorite templates / frameworks etc., and you don't want to repeat yourself when using these colors in a sass file as variable (e.g. `$fancy-white: #FFFFFE; /*...*/ background-color: $fancy-white`). In this situation just require your module in the beginning of your sass module:
+You can use this module in your favorite templates / frameworks etc., and you don't want to repeat yourself when using these colors in a sass file as variable (e.g. `$fancy-white: #FFFFFE; /*...*/ background-color: $fancy-white`). In this situation just @import-js your module in the beginning of your sass module:
 ```sass
-require('relative/path/to/colors.js');
+@import-js 'relative/path/to/colors.js';
 
 // ...
 .some-class {
@@ -125,18 +125,18 @@ module.exports = {
 };
 ```
 
-Variables definitions are inserted into your sass/less file in place of the `require()` statement, so you can override variables inside blocks:
+Variables definitions are inserted into your sass/less file in place of the `@import-js` statement, so you can override variables inside blocks:
 
 ```less
 
-require("themes.js").default;
+@import-js "themes.js".default;
 
 .someThing {
   color: @some_color;
 }
 
 .theme-blue {
-  require("themes.js").themes.blue_theme;
+  @import-js "themes.js".themes.blue_theme;
 
   .someThing {
     color: @some_color;
